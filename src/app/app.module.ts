@@ -10,6 +10,7 @@ import {NewsComponent} from './page/news/news.component';
 import {HeaderComponent} from './page/header/header.component';
 import {FooterComponent} from './page/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {})
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

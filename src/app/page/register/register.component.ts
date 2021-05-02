@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
         }
       }
 
-      console.log(this.programs);
+      // console.log(this.programs);
 
     }).catch(err => {
       console.error(err);
@@ -74,15 +74,6 @@ export class RegisterComponent implements OnInit {
   }
 
   post() {
-
-    console.log(this.form.value);
-    console.log(this.form);
-    console.log('name', this.form.controls.name.status);
-    console.log('Email', this.form.controls.email.status);
-    console.log('family_name', this.form.controls.family_name.status);
-    console.log('phone', this.form.controls.phone.status);
-    console.log('program', this.form.controls.program.status);
-    console.log('comment', this.form.controls.comment.status);
 
     if (this.form.invalid) {
       this.field(this.form);

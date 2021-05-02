@@ -25,13 +25,13 @@ export class NewsComponent implements OnInit {
 
     this.activatedRoute.queryParams
       .subscribe(params => {
-        console.log(params);
+        // console.log(params);
         if (params.id == undefined) {
           this.router.navigate(['/home']);
         } else {
 
           this.idNews = params.id;
-          console.log(this.idNews);
+          // console.log(this.idNews);
           this.getNews();
 
         }
@@ -42,7 +42,7 @@ export class NewsComponent implements OnInit {
   getNews() {
 
     this.API.getForm(APIRoutes.NEWS).then((resp: Array<any>) => {
-      console.log(resp);
+      // console.log(resp);
       this.news = resp.find(res => res.id === this.idNews);
       console.log(this.news);
     }).catch(err => {

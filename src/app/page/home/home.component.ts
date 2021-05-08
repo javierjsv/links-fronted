@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.API.getUrl(APIRoutes.NEWS).then((resp: Array<any>) => {
+    this.API.getForm(APIRoutes.NEWS).then((resp: Array<any>) => {
       // console.log(resp);
       this.news = resp;
     }).catch(err => {

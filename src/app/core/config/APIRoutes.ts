@@ -5,5 +5,4 @@ export const APIRoutes = {
   NEWS: `/servicios/noticias`,
   PROGRAM_INTERES: `/servicios/programas`,
   REGISTER: `/servicios/registro`,
-  PRODUCT: `/assets/json/ofertas.json`,
 };

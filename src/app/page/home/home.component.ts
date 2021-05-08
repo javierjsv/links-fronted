@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.API.getUrl(APIRoutes.PRODUCT).then((resp: Array<any>) => {
-      console.log(resp);
-      // this.news = resp;
+    this.API.getUrl(APIRoutes.NEWS).then((resp: Array<any>) => {
+      // console.log(resp);
+      this.news = resp;
     }).catch(err => {
       console.error(err);
     });

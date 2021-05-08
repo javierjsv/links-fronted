@@ -30,6 +30,18 @@ export class ServiceService {
     });
   }
 
+  getUrl(relUrl) {
+    return new Promise((resolve, reject) => {
+      this.url_receiver = relUrl;
+      this.http.get(relUrl)
+        .subscribe(res => {
+          resolve(res);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
 
   postForm(formData, relUrl) {
     return new Promise((resolve, reject) => {

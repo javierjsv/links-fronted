@@ -3,6 +3,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "paths": {
+      "@env": ["environments/environment"],
+      "@globalsStr": ["app/core/config/Strings"]
+    },
     "types": []
   },
   "files": [

@@ -1,41 +1,43 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
-import {APIRoutes} from '../../core/config/APIRoutes';
 import {ServiceService} from '../../core/services/service.service';
+import {APIRoutes} from '../../core/config/APIRoutes';
 import {Router} from '@angular/router';
 import {GLOBAL_STRS} from '../../core/config/Strings';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   public form: FormGroup;
-  public programs: Array<any> = [];
   public GlobalStr = GLOBAL_STRS;
 
   constructor(
     private formBuilder: FormBuilder,
     public API: ServiceService,
-    public router: Router
+    public router: Router,
+    public authService: AuthService
   ) {
 
     this.form = this.formBuilder.group({
-      name: ['', Validators.compose([
-        Validators.pattern('^\\w+[a-zA-Z_]'),
-        Validators.required
-      ])],
+      password: ['', Validators.required],
       email: ['', Validators.compose([
         Validators.pattern('^\\w+@[a-zA-Z_]+?\\.[a-zA-Z.]{2,7}$'),
         Validators.required
-      ])],
-      password: ['', Validators.compose([Validators.required])],
+      ])]
     });
   }
 
   ngOnInit(): void {
+
+    if (this.authService.isLogged()) {
+      this.go('dashboard');
+    }
+
   }
 
 
@@ -50,7 +52,9 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  singUp() {
+  login() {
+    console.log(this.form.value);
+    console.log(this.form.controls);
 
     if (this.form.invalid) {
       this.field(this.form);
@@ -59,29 +63,23 @@ export class RegisterComponent implements OnInit {
 
     const data = new FormData();
 
-    data.append('name', this.form.value.name);
     data.append('email', this.form.value.email);
     data.append('password', this.form.value.password);
 
-    this.API.postForm(data, APIRoutes.REGISTER).then(resp => {
+    this.API.postForm(data, APIRoutes.SIGNUP_USER).then(resp => {
       console.log(resp);
-      this.API.alertSwit('Save', 'successfully', 'success');
+      console.log(resp['token']);
+      localStorage.setItem('token', JSON.stringify(resp['token']));
       this.form.reset();
-
-      localStorage.setItem('token', JSON.stringify(resp['id']));
-
+      this.router.navigateByUrl('/dashboard');
     }).catch(err => {
-      console.log('Error', err);
-      this.API.alertSwit('Sorry ', 'An error occurred', 'error');
-
+      console.error('Errr=>', err);
     });
-
 
   }
 
   go(url) {
     this.router.navigateByUrl(url);
   }
-
 
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  domain: 'https://cms.qailumno.com',
+  domain: 'https://private-anon-cacf80f1c9-henrybravo.apiary-mock.com/',
 };
 
 /*

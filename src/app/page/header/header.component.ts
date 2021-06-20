@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,6 +8,9 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() name: string = 'SINGNUP';
+  @Input() rute: string = 'login';
+
   constructor(
     public router: Router,
   ) {
@@ -16,8 +19,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  go(url?) {
-    this.router.navigate([url]);
+  go() {
+    this.router.navigate([this.rute]);
   }
 
 

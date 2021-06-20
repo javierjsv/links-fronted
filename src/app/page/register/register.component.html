@@ -1,13 +1,19 @@
-<div class="container my-5 " style="height:  870px !important;">
+<app-header name="LOGIN" rute="login"></app-header>
 
-  <div class="my-5">
+<div class="container d-flex align-items-center justify-content-center content-navbar-img">
+  <img [src]="GlobalStr.LOGO_LINK" alt="img">
+</div>
 
-    <p class="text-center" style="font-size: 30px"><b>Register</b></p>
-    <form [formGroup]="form" (ngSubmit)="post()">
+<div class="container d-flex align-items-center justify-content-center ">
 
 
+  <div class="row card-border card-width m-5 p-5">
+
+    <form [formGroup]="form" (ngSubmit)="singUp()" class="w-100">
+
+      <h1 class="mb-0  font-size-24">SIGNUP</h1>
       <div class="col-12 form-group mb-0 px-0">
-        <h6 for="name" class="mt-0">*Name</h6>
+        <label class="mt-0 font-size-14">Full Name</label>
         <input type="text" class="form-control"
                aria-describedby="name"
                placeholder="" formControlName="name">
@@ -17,65 +23,51 @@
       </div>
 
       <div class="col-12 form-group mb-0 px-0 mt-3">
-        <h6 for="family_name" class="mt-0">*Family name</h6>
-        <input type="text" class="form-control"
-               aria-describedby="family_name"
-               placeholder="" formControlName="family_name">
-        <span *ngIf="(form.controls.family_name.status == 'INVALID') && (form.controls.family_name.touched)" class="text-danger">
-          The field is required and cannot contain numbers or special characters
-        </span>
-      </div>
-
-      <div class="col-12 form-group mb-0 px-0 mt-3">
-        <h6 for="email" class="mt-0">Email</h6>
+        <label class="mt-0 font-size-14">Your Email</label>
         <input type="text" class="form-control"
                aria-describedby="email"
                placeholder="" formControlName="email">
 
-        <span *ngIf="(form.controls.email.status == 'INVALID') && (form.controls.email.touched)" class="text-danger">the field is required and should be valid</span>
+        <span *ngIf="(form.controls.email.status == 'INVALID') && (form.controls.email.touched)" class="text-danger">
+          the field is required and should be valid
+        </span>
       </div>
 
 
       <div class="col-12 form-group mb-0 px-0 mt-3">
-        <h6 for="phone" class="mt-0">Phone</h6>
-        <input type="number" max="9999999999" class="form-control"
-               aria-describedby="phone"
-               placeholder="" formControlName="phone">
-        <span *ngIf="(form.controls.phone.status == 'INVALID') && (form.controls.phone.touched)" class="text-danger">the field phone maximum 10 characters</span>
+        <label class="mt-0 font-size-14">Password</label>
+        <input type="password" class="form-control"
+               aria-describedby="password"
+               placeholder="" formControlName="password">
+        <span *ngIf="(form.controls.password.status == 'INVALID') && (form.controls.password.touched)"
+              class="text-danger">the field is required</span>
       </div>
 
 
-      <div class="col-12 form-group mb-0 px-0 mt-3">
-        <h6 for="program" class="mt-0">Program</h6>
-        <select class="custom-select" formControlName="program">
-          <option selected disabled>Program</option>
-          <option [ngValue]="item.id" *ngFor="let item of programs">{{item?.name}}</option>
-
-        </select>
-      </div>
-
-
-      <div class="col-12 form-group mb-0 px-0 mt-3">
-        <h6 for="comment" class="mt-0">Comment</h6>
-        <input type="text" class="form-control"
-               aria-describedby="comment"
-               placeholder="" formControlName="comment">
-      </div>
-
-
-      <div class="text-center">
+      <div class="text-center col-12 mt-3">
 
         <button type="submit"
-                class="btn btn-primary m-3">
-          Save
+                class="btn btn-primary btn-block">
+          SING UP
         </button>
+        <p class="mt-2 font-size-12"> By Creating account You agree to the
+          <span class="text-primary cursor">Terms of use</span>
+          and <span class="text-primary cursor">Privacy Polycy</span>
+        </p>
       </div>
 
     </form>
+
+
   </div>
+
 
 </div>
 
-<app-footer></app-footer>
+
+
+
+
+
 
 
